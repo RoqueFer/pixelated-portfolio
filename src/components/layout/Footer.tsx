@@ -46,9 +46,7 @@ export const Footer: React.FC = () => {
       {/* Copyright Bar */}
       <div className="bg-muted border-t border-border px-4 py-2 text-center text-xs text-muted-foreground">
         <p>
-          © {currentYear} - Feito com ♥ e muito café |{' '}
-          <span className="retro-link cursor-pointer">Livro de Visitas</span> |{' '}
-          <span className="retro-link cursor-pointer">Mapa do Site</span>
+          © {currentYear} - Feito com ♥ e muito café
         </p>
         <p className="mt-1 font-mono">
           &lt;/&gt; Powered by TypeScript + React
