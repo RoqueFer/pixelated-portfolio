@@ -42,23 +42,19 @@ const Index: React.FC = () => {
 
 /**
  * WelcomeBanner Component
- * Hero section with retro welcome message.
+ * Hero section with retro welcome message and colorful ASCII art.
  */
 const WelcomeBanner: React.FC = () => (
   <div className="text-center py-8 space-y-4">
-    {/* ASCII Art Style Header */}
-    <pre className="font-mono text-xs sm:text-sm text-primary overflow-x-auto">
-{`
-  ╔════════════════════════════════════════════════════════════════╗
-  ║   ___                           _        ___                   ║
-  ║  | __>_ _ _ _ _  ___ ._ _  _| |___   | . \\ ___  ___ _ _ ___   ║
-  ║  | _>| '_| ' ' |<_> || ' |/ . |/ . \\  |   // . \\/ . | | | ._> ║
-  ║  |_| |_| |_|_|_|<___||_|_|\\___|\\___|  |_\\_\\\\___/\\_, |___|_|   ║
-  ║                                                    <_|         ║
-  ║                      ~ developer ~                             ║
-  ╚════════════════════════════════════════════════════════════════╝
-`}
-    </pre>
+    {/* Colorful ASCII Art Style Header */}
+    <div className="font-mono text-xs sm:text-sm overflow-x-auto flex justify-center">
+      <pre className="inline-block">
+        <span className="text-cyan-500">┌─</span><span className="text-blue-500">┐</span> <span className="text-red-500">┌─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">┌──</span> <span className="text-green-500">┌─┐</span> <span className="text-cyan-500">┌─┐</span> <span className="text-blue-500">┌─┐</span> <span className="text-purple-500">┌─┐</span> <span className="text-pink-500">┌──</span> <span className="text-red-500">┌─┐</span>   <span className="text-orange-500">┌──</span> <span className="text-yellow-500">┌─┐</span> <span className="text-green-500">┌──┐</span> <span className="text-cyan-500">┌</span> <span className="text-blue-500">┌</span> <span className="text-purple-500">┌─</span><span className="text-pink-500">─</span>{'\n'}
+        <span className="text-cyan-500">├─</span><span className="text-blue-500">┤</span> <span className="text-red-500">├─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">├─┐</span> <span className="text-green-500">│ │</span> <span className="text-cyan-500">├─┤</span> <span className="text-blue-500">│ │</span> <span className="text-purple-500">│ │</span> <span className="text-pink-500">│ │</span> <span className="text-red-500">│ │</span>   <span className="text-orange-500">├─┐</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│  │</span> <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-purple-500">├─</span><span className="text-pink-500">─</span>{'\n'}
+        <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-red-500">└─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│ │</span> <span className="text-cyan-500">│ │</span> <span className="text-blue-500">│ │</span> <span className="text-purple-500">│ │</span> <span className="text-pink-500">│ │</span> <span className="text-red-500">│ │</span>   <span className="text-orange-500">│ │</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│  │</span> <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-purple-500">├─</span><span className="text-pink-500">─</span>{'\n'}
+        <span className="text-cyan-500">└</span> <span className="text-blue-500">┘</span> <span className="text-red-500">└─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">└──</span> <span className="text-green-500">└─┘</span> <span className="text-cyan-500">└ └</span> <span className="text-blue-500">└─┘</span> <span className="text-purple-500">└─┘</span> <span className="text-pink-500">└──</span> <span className="text-red-500">└─┘</span>   <span className="text-orange-500">└─┘</span> <span className="text-yellow-500">└─┘</span> <span className="text-green-500">└──┘</span> <span className="text-cyan-500">└─</span><span className="text-blue-500">┘</span> <span className="text-purple-500">└─</span><span className="text-pink-500">─</span>
+      </pre>
+    </div>
 
     {/* Subtitle */}
     <div className="space-y-2">
@@ -66,7 +62,7 @@ const WelcomeBanner: React.FC = () => (
         Bem-vindo(a) à minha página pessoal!
       </p>
       <p className="text-muted-foreground max-w-xl mx-auto">
-        Desenvolvedor(a) · Entusiasta de código limpo · Indie Web
+        Desenvolvedor · Entusiasta de código limpo · Indie Web
       </p>
     </div>
 
