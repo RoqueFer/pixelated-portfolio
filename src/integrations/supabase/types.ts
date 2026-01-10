@@ -14,7 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          category: string
+          content: string | null
+          created_at: string
+          excerpt: string
+          id: string
+          is_published: boolean
+          read_time: string
+          sort_order: number
+          title: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          excerpt: string
+          id?: string
+          is_published?: boolean
+          read_time?: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          excerpt?: string
+          id?: string
+          is_published?: boolean
+          read_time?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          is_admin: boolean
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id: string
+          is_admin?: boolean
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_admin?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          created_at: string
+          demo_url: string | null
+          description: string
+          icon: string
+          id: string
+          is_published: boolean
+          repo_url: string | null
+          sort_order: number
+          technologies: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          demo_url?: string | null
+          description: string
+          icon?: string
+          id?: string
+          is_published?: boolean
+          repo_url?: string | null
+          sort_order?: number
+          technologies?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          demo_url?: string | null
+          description?: string
+          icon?: string
+          id?: string
+          is_published?: boolean
+          repo_url?: string | null
+          sort_order?: number
+          technologies?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
