@@ -23,7 +23,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Projetos', href: '#projetos' },
   { label: 'Artigos', href: '#artigos' },
   { label: 'Contato', href: '#contato' },
-  { label: '🔐 Admin', href: '/auth' },
 ];
 
 export const Header: React.FC = () => {
