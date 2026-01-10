@@ -3,15 +3,17 @@
  * 
  * "Projetos" section showcasing portfolio projects.
  * Each project is displayed as a mini file explorer window.
+ * Fetches data from database or uses fallback data.
  * 
  * @principle Single Responsibility - Only handles projects display
  * @principle Interface Segregation - Project interface contains only needed data
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { RetroWindow } from '@/components/ui/RetroWindow';
 import { RetroButton } from '@/components/ui/RetroButton';
 import { cn } from '@/lib/utils';
+import { supabase } from '@/integrations/supabase/client';
 
 /** Project data structure */
 interface Project {
@@ -20,20 +22,20 @@ interface Project {
   description: string;
   technologies: string[];
   icon: string;
-  demoUrl?: string;
-  repoUrl?: string;
+  demo_url?: string | null;
+  repo_url?: string | null;
 }
 
-/** Sample projects data - can be moved to external config */
-const PROJECTS: Project[] = [
+/** Fallback projects data */
+const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'projeto-1',
     title: 'E-Commerce App',
     description: 'Uma aplicação completa de e-commerce com carrinho, checkout e integração de pagamentos.',
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
     icon: '🛒',
-    demoUrl: '#',
-    repoUrl: '#',
+    demo_url: '#',
+    repo_url: '#',
   },
   {
     id: 'projeto-2',
@@ -41,29 +43,37 @@ const PROJECTS: Project[] = [
     description: 'Gerenciador de tarefas com drag-and-drop, categorias e sincronização em tempo real.',
     technologies: ['React', 'Firebase', 'Tailwind'],
     icon: '📋',
-    demoUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 'projeto-3',
-    title: 'Weather Dashboard',
-    description: 'Dashboard de clima com previsões, gráficos interativos e geolocalização.',
-    technologies: ['TypeScript', 'React', 'Chart.js', 'API REST'],
-    icon: '🌤️',
-    demoUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 'projeto-4',
-    title: 'Blog Engine',
-    description: 'Sistema de blog com editor markdown, comentários e sistema de tags.',
-    technologies: ['Next.js', 'MDX', 'Prisma'],
-    icon: '📝',
-    repoUrl: '#',
+    demo_url: '#',
+    repo_url: '#',
   },
 ];
 
 export const ProjectsSection: React.FC = () => {
+  const [projects, setProjects] = useState<Project[]>(FALLBACK_PROJECTS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select('id, title, description, technologies, icon, demo_url, repo_url')
+          .eq('is_published', true)
+          .order('sort_order', { ascending: true });
+
+        if (!error && data && data.length > 0) {
+          setProjects(data);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <RetroWindow title="C:\Meus_Projetos" id="projetos" className="max-w-5xl mx-auto">
       {/* Toolbar */}
@@ -72,13 +82,13 @@ export const ProjectsSection: React.FC = () => {
         <ToolbarButton>📂 Abrir</ToolbarButton>
         <ToolbarButton>🔄 Atualizar</ToolbarButton>
         <span className="text-xs text-muted-foreground ml-auto">
-          {PROJECTS.length} itens
+          {loading ? '...' : `${projects.length} itens`}
         </span>
       </div>
 
       {/* Projects Grid */}
       <div className="grid md:grid-cols-2 gap-4">
-        {PROJECTS.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
@@ -131,15 +141,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
 
       {/* Actions */}
       <div className="flex gap-2 pt-2 border-t border-border">
-        {project.demoUrl && (
-          <RetroButton size="sm" variant="primary">
-            ▶ Demo
-          </RetroButton>
+        {project.demo_url && (
+          <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
+            <RetroButton size="sm" variant="primary">
+              ▶ Demo
+            </RetroButton>
+          </a>
         )}
-        {project.repoUrl && (
-          <RetroButton size="sm">
-            📂 Código
-          </RetroButton>
+        {project.repo_url && (
+          <a href={project.repo_url} target="_blank" rel="noopener noreferrer">
+            <RetroButton size="sm">
+              📂 Código
+            </RetroButton>
+          </a>
         )}
       </div>
     </div>

@@ -23,10 +23,15 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Projetos', href: '#projetos' },
   { label: 'Artigos', href: '#artigos' },
   { label: 'Contato', href: '#contato' },
+  { label: '🔐 Admin', href: '/auth' },
 ];
 
 export const Header: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/')) {
+      // Let the browser handle route links normally
+      return;
+    }
     e.preventDefault();
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
