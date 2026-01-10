@@ -10,6 +10,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { RetroWindow } from '@/components/ui/RetroWindow';
 import { cn } from '@/lib/utils';
 import { supabase } from '@/integrations/supabase/client';
@@ -128,45 +129,64 @@ interface ArticleRowProps {
   isEven: boolean;
 }
 
-const ArticleRow: React.FC<ArticleRowProps> = ({ article, isEven }) => (
-  <a
-    href={article.url || '#'}
-    className={cn(
-      'grid grid-cols-12 gap-2 px-2 py-2 border border-border',
-      'hover:bg-primary hover:text-primary-foreground',
-      'transition-colors cursor-pointer group',
-      isEven ? 'bg-card' : 'bg-muted/50'
-    )}
-  >
-    {/* Icon */}
-    <span className="col-span-1 text-center">📝</span>
+const ArticleRow: React.FC<ArticleRowProps> = ({ article, isEven }) => {
+  // Check if it's a database article (UUID format) or fallback
+  const isDbArticle = article.id.length > 10;
+  const href = isDbArticle ? `/artigo/${article.id}` : (article.url || '#');
+  
+  const content = (
+    <>
+      {/* Icon */}
+      <span className="col-span-1 text-center">📝</span>
 
-    {/* Title & Excerpt */}
-    <div className="col-span-6">
-      <p className="font-mono text-sm text-foreground group-hover:text-primary-foreground truncate">
-        {article.title}
-      </p>
-      <p className="text-xs text-muted-foreground group-hover:text-primary-foreground/70 truncate">
-        {article.excerpt}
-      </p>
-    </div>
+      {/* Title & Excerpt */}
+      <div className="col-span-6">
+        <p className="font-mono text-sm text-foreground group-hover:text-primary-foreground truncate">
+          {article.title}
+        </p>
+        <p className="text-xs text-muted-foreground group-hover:text-primary-foreground/70 truncate">
+          {article.excerpt}
+        </p>
+      </div>
 
-    {/* Category */}
-    <span className="col-span-2 text-xs text-muted-foreground group-hover:text-primary-foreground self-center">
-      [{article.category}]
-    </span>
+      {/* Category */}
+      <span className="col-span-2 text-xs text-muted-foreground group-hover:text-primary-foreground self-center">
+        [{article.category}]
+      </span>
 
-    {/* Date */}
-    <span className="col-span-2 text-xs text-muted-foreground group-hover:text-primary-foreground self-center">
-      {formatDate(article.created_at)}
-    </span>
+      {/* Date */}
+      <span className="col-span-2 text-xs text-muted-foreground group-hover:text-primary-foreground self-center">
+        {formatDate(article.created_at)}
+      </span>
 
-    {/* Read Time */}
-    <span className="col-span-1 text-xs text-muted-foreground group-hover:text-primary-foreground self-center text-right">
-      {article.read_time}
-    </span>
-  </a>
-);
+      {/* Read Time */}
+      <span className="col-span-1 text-xs text-muted-foreground group-hover:text-primary-foreground self-center text-right">
+        {article.read_time}
+      </span>
+    </>
+  );
+
+  const className = cn(
+    'grid grid-cols-12 gap-2 px-2 py-2 border border-border',
+    'hover:bg-primary hover:text-primary-foreground',
+    'transition-colors cursor-pointer group',
+    isEven ? 'bg-card' : 'bg-muted/50'
+  );
+
+  if (isDbArticle) {
+    return (
+      <Link to={href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} className={className}>
+      {content}
+    </a>
+  );
+};
 
 /**
  * Format date to DD/MM/YY format
