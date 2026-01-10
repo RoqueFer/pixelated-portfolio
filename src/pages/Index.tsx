@@ -42,35 +42,35 @@ const Index: React.FC = () => {
 
 /**
  * WelcomeBanner Component
- * Hero section with retro welcome message and colorful ASCII art.
+ * Hero section with retro welcome message.
  */
 const WelcomeBanner: React.FC = () => (
-  <div className="text-center py-8 space-y-4">
-    {/* Colorful ASCII Art Style Header */}
-    <div className="font-mono text-xs sm:text-sm overflow-x-auto flex justify-center">
-      <pre className="inline-block">
-        <span className="text-cyan-500">┌─</span><span className="text-blue-500">┐</span> <span className="text-red-500">┌─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">┌──</span> <span className="text-green-500">┌─┐</span> <span className="text-cyan-500">┌─┐</span> <span className="text-blue-500">┌─┐</span> <span className="text-purple-500">┌─┐</span> <span className="text-pink-500">┌──</span> <span className="text-red-500">┌─┐</span>   <span className="text-orange-500">┌──</span> <span className="text-yellow-500">┌─┐</span> <span className="text-green-500">┌──┐</span> <span className="text-cyan-500">┌</span> <span className="text-blue-500">┌</span> <span className="text-purple-500">┌─</span><span className="text-pink-500">─</span>{'\n'}
-        <span className="text-cyan-500">├─</span><span className="text-blue-500">┤</span> <span className="text-red-500">├─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">├─┐</span> <span className="text-green-500">│ │</span> <span className="text-cyan-500">├─┤</span> <span className="text-blue-500">│ │</span> <span className="text-purple-500">│ │</span> <span className="text-pink-500">│ │</span> <span className="text-red-500">│ │</span>   <span className="text-orange-500">├─┐</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│  │</span> <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-purple-500">├─</span><span className="text-pink-500">─</span>{'\n'}
-        <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-red-500">└─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│ │</span> <span className="text-cyan-500">│ │</span> <span className="text-blue-500">│ │</span> <span className="text-purple-500">│ │</span> <span className="text-pink-500">│ │</span> <span className="text-red-500">│ │</span>   <span className="text-orange-500">│ │</span> <span className="text-yellow-500">│ │</span> <span className="text-green-500">│  │</span> <span className="text-cyan-500">│</span> <span className="text-blue-500">│</span> <span className="text-purple-500">├─</span><span className="text-pink-500">─</span>{'\n'}
-        <span className="text-cyan-500">└</span> <span className="text-blue-500">┘</span> <span className="text-red-500">└─</span><span className="text-orange-500">─</span> <span className="text-yellow-500">└──</span> <span className="text-green-500">└─┘</span> <span className="text-cyan-500">└ └</span> <span className="text-blue-500">└─┘</span> <span className="text-purple-500">└─┘</span> <span className="text-pink-500">└──</span> <span className="text-red-500">└─┘</span>   <span className="text-orange-500">└─┘</span> <span className="text-yellow-500">└─┘</span> <span className="text-green-500">└──┘</span> <span className="text-cyan-500">└─</span><span className="text-blue-500">┘</span> <span className="text-purple-500">└─</span><span className="text-pink-500">─</span>
-      </pre>
-    </div>
-
-    {/* Subtitle */}
+  <div className="text-center py-12 space-y-6">
+    {/* Name in Retro Pixel Font */}
     <div className="space-y-2">
-      <p className="font-retro text-2xl md:text-3xl text-foreground">
-        Bem-vindo(a) à minha página pessoal!
-      </p>
-      <p className="text-muted-foreground max-w-xl mx-auto">
-        Desenvolvedor · Entusiasta de código limpo · Indie Web
+      <h1 className="font-pixel text-2xl sm:text-3xl md:text-4xl text-primary tracking-wider">
+        Fernando Roque
+      </h1>
+      <p className="font-pixel text-xs sm:text-sm text-muted-foreground">
+        developer
       </p>
     </div>
 
     {/* Decorative Divider */}
     <div className="flex items-center justify-center gap-2 text-muted-foreground">
-      <span>─────</span>
-      <span>◆</span>
-      <span>─────</span>
+      <span className="text-primary">━━━━━</span>
+      <span className="text-primary">◆</span>
+      <span className="text-primary">━━━━━</span>
+    </div>
+
+    {/* Subtitle */}
+    <div className="space-y-2">
+      <p className="font-retro text-xl md:text-2xl text-foreground">
+        Bem-vindo(a) à minha página pessoal!
+      </p>
+      <p className="text-muted-foreground max-w-xl mx-auto">
+        Desenvolvedor · Entusiasta de código limpo · Indie Web
+      </p>
     </div>
 
     {/* Last Updated */}
