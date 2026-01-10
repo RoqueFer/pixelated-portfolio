@@ -69,6 +69,7 @@ export default {
       fontFamily: {
         mono: ["'IBM Plex Mono'", "'Courier New'", "monospace"],
         retro: ["'VT323'", "'Courier New'", "monospace"],
+        pixel: ["'Press Start 2P'", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
