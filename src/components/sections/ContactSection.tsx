@@ -23,10 +23,9 @@ interface SocialLink {
 
 /** Sample social links - can be moved to external config */
 const SOCIAL_LINKS: SocialLink[] = [
-  { name: 'GitHub', icon: '🐙', url: 'https://github.com', username: '@seuusuario' },
-  { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com', username: '/in/seuusuario' },
-  { name: 'Twitter/X', icon: '🐦', url: 'https://twitter.com', username: '@seuusuario' },
-  { name: 'Email', icon: '📧', url: 'mailto:seu@email.com', username: 'seu@email.com' },
+  { name: 'GitHub', icon: '🐙', url: 'https://github.com/RoqueFer', username: '@RoqueFer' },
+  { name: 'LinkedIn', icon: '💼', url: 'https://www.linkedin.com/in/fernandodestriroque/', username: '/in/seuusuario' },
+  { name: 'Email', icon: '📧', url: 'mailto: fdestriroque@gmail.com', username: 'fdestriroque@gmail.com' },
 ];
 
 export const ContactSection: React.FC = () => {
