@@ -20,11 +20,13 @@ interface Skill {
 
 /** Sample skills data - can be moved to external config */
 const SKILLS: Skill[] = [
-  { name: 'TypeScript', level: 90 },
-  { name: 'React', level: 85 },
-  { name: 'Node.js', level: 80 },
-  { name: 'CSS/Tailwind', level: 85 },
+  { name: 'TypeScript', level: 45 },
+  { name: 'React', level: 55 },
+  { name: 'Node.js', level: 40 },
+  { name: 'CSS/Tailwind', level: 65 },
   { name: 'Git', level: 75 },
+  { name: 'C for Embbeded Systems', level: 50 },
+  { name: 'SaaS', level: 75 },
 ];
 
 export const AboutSection: React.FC = () => {
@@ -34,7 +36,7 @@ export const AboutSection: React.FC = () => {
         {/* Profile Picture Area */}
         <div className="flex flex-col items-center gap-4">
           <div className="w-32 h-32 bg-muted border-2 border-border-dark retro-inset flex items-center justify-center">
-            <div className="text-6xl">👤</div>
+            <div className="text-6xl"><img src="/rosque.jpg" alt="Foto de perfil" className="w-full h-full object-cover"></img></div>
           </div>
           <div className="text-center">
             <p className="font-retro text-xl text-foreground">Fernando D. Roque</p>
