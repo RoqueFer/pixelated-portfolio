@@ -37,8 +37,8 @@ export const AboutSection: React.FC = () => {
             <div className="text-6xl">👤</div>
           </div>
           <div className="text-center">
-            <p className="font-retro text-xl text-foreground">Seu Nome</p>
-            <p className="text-sm text-muted-foreground">Desenvolvedor(a)</p>
+            <p className="font-retro text-xl text-foreground">Fernando D. Roque</p>
+            <p className="text-sm text-muted-foreground">Desenvolvedor</p>
           </div>
           
           {/* Status */}
@@ -58,8 +58,8 @@ export const AboutSection: React.FC = () => {
               Olá, Mundo! <span className="animate-blink">_</span>
             </p>
             <p className="text-foreground leading-relaxed">
-              Bem-vindo(a) à minha página pessoal! Sou um(a) desenvolvedor(a) 
-              apaixonado(a) por código limpo, interfaces intuitivas e pela 
+              Bem-vindo(a) à minha página pessoal! Sou um desenvolvedor
+              apaixonado por código limpo, interfaces intuitivas e pela 
               nostalgia da web dos anos 2000.
             </p>
           </div>
@@ -67,13 +67,13 @@ export const AboutSection: React.FC = () => {
           {/* Description */}
           <div className="space-y-2 text-sm text-muted-foreground">
             <p>
-              ▸ Trabalho com desenvolvimento web há X anos
+              ▸ Estudando desenvolvimento há 3 anos
             </p>
             <p>
-              ▸ Especializado(a) em aplicações React e TypeScript
+              ▸ Focado em aperfeiçoamento profissional constante
             </p>
             <p>
-              ▸ Entusiasta de código aberto e indie web
+              ▸ Entusiasta de código aberto e software livre
             </p>
             <p>
               ▸ Sempre aprendendo algo novo
@@ -95,7 +95,7 @@ export const AboutSection: React.FC = () => {
       {/* Decorative marquee */}
       <div className="mt-6 bg-muted border border-border retro-inset overflow-hidden">
         <div className="animate-marquee whitespace-nowrap py-1 text-sm text-muted-foreground">
-          ★ TypeScript ★ React ★ Node.js ★ Tailwind CSS ★ Git ★ Clean Code ★ SOLID ★ 
+          ★ TypeScript ★ React ★ Node.js ★ Tailwind CSS ★ Git ★ C for Embedded Systems ★ SaaS 
         </div>
       </div>
     </RetroWindow>
