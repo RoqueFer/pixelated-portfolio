@@ -131,7 +131,7 @@ interface ArticleRowProps {
 
 const ArticleRow: React.FC<ArticleRowProps> = ({ article, isEven }) => {
   // Check if it's a database article (UUID format) or fallback
-  const isDbArticle = article.id.length > 10;
+  const isDbArticle = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(article.id);
   const href = isDbArticle ? `/artigo/${article.id}` : (article.url || '#');
   
   const content = (
