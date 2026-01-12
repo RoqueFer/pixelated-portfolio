@@ -48,13 +48,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
 
     // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => { // 1. Adicionado async aqui
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        checkAdminStatus(session.user.id);
+        // 2. Adicionado await aqui para ESPERAR a resposta do banco
+        await checkAdminStatus(session.user.id);
       }
+      
+      // 3. Só agora removemos o loading
       setLoading(false);
     });
 
