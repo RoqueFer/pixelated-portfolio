@@ -44,7 +44,7 @@ const Admin: React.FC = () => {
     );
   }
 
-  if (!isAdmin) {
+ /* if (!isAdmin) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4 scanlines">
         <RetroWindow title="Acesso Negado" className="w-full max-w-md">
@@ -68,7 +68,7 @@ const Admin: React.FC = () => {
         </RetroWindow>
       </div>
     );
-  }
+  */}
 
   return (
     <div className="min-h-screen bg-background p-4 scanlines">
