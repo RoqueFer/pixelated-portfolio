@@ -1,12 +1,3 @@
-/**
- * Admin Page
- * 
- * Admin console for managing projects and articles.
- * Styled as a classic Windows control panel.
- * 
- * @principle Single Responsibility - Only handles admin dashboard UI
- */
-
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RetroWindow } from '@/components/ui/RetroWindow';
@@ -17,9 +8,11 @@ import { ArticlesManager } from '@/components/admin/ArticlesManager';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Admin: React.FC = () => {
-  const { user, isAdmin, loading, signOut } = useAuth();
+  // Pegamos os dados, mas IGNORAMOS o isAdmin propositalmente
+  const { user, loading, signOut } = useAuth(); 
   const navigate = useNavigate();
 
+  // Redireciona para login se não estiver autenticado
   useEffect(() => {
     if (!loading && !user) {
       navigate('/auth');
@@ -31,6 +24,7 @@ const Admin: React.FC = () => {
     navigate('/');
   };
 
+  // Mostra carregando enquanto verifica a sessão
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center scanlines">
@@ -44,37 +38,14 @@ const Admin: React.FC = () => {
     );
   }
 
- /* if (!isAdmin) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4 scanlines">
-        <RetroWindow title="Acesso Negado" className="w-full max-w-md">
-          <div className="text-center py-8">
-            <div className="text-6xl mb-4">🚫</div>
-            <h2 className="text-xl font-retro text-destructive mb-2">
-              Acesso Negado
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              Você não tem permissões de administrador para acessar esta área.
-            </p>
-            <div className="flex gap-2 justify-center">
-              <RetroButton onClick={() => navigate('/')}>
-                🏠 Voltar ao Início
-              </RetroButton>
-              <RetroButton onClick={handleSignOut}>
-                🚪 Sair
-              </RetroButton>
-            </div>
-          </div>
-        </RetroWindow>
-      </div>
-    );
-  */}
-
+  // AQUI ESTAVA A TRAVA DE SEGURANÇA QUE NÓS REMOVEMOS
+  // O código agora pula direto para o painel principal
+  
   return (
     <div className="min-h-screen bg-background p-4 scanlines">
       {/* Header */}
       <div className="max-w-6xl mx-auto mb-4">
-        <RetroWindow title="Painel de Controle - Administrador" className="w-full">
+        <RetroWindow title="Painel de Controle - Administrador (Modo Dev)" className="w-full">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="text-3xl">🖥️</span>
